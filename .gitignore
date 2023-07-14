@@ -1,0 +1,9 @@
+.DS_Store
+.idea/
+.env/
+.vscode/
+__pycache__/
+*.pyc
+*.log
+*.pth
+*.pt

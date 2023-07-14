@@ -1,0 +1,29 @@
+# dataset
+data_root: ../datasets/
+dataset: food101n
+n_classes: 101
+rescale_size: 256
+crop_size: 224
+
+# network & optimization
+arch: resnet50
+opt: sgd
+batch_size: 128
+epochs: 60
+lr: 0.02
+lr_decay: cosine:5
+warmup_epochs: 5
+warmup_lr: 0.02
+warmup_lr_plan: constant
+weight_decay: 1.0e-5
+use_fp16: True
+
+# hyper-params
+eps: 0.65
+alpha: 0.5
+
+# logging
+log_root: ../results/
+log_proj: ''
+log_name: IterJoSRC
+

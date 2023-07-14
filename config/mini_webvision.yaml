@@ -1,0 +1,29 @@
+# dataset
+data_root: ../datasets/
+dataset: mini-webvision
+n_classes: 50
+rescale_size: 256 # 320
+crop_size: 224    # 299
+
+# network & optimization
+arch: InceptionResNetV2
+opt: sgd
+batch_size: 128
+epochs: 150
+lr: 0.02
+lr_decay: cosine:10
+warmup_epochs: 10
+warmup_lr: 0.02
+warmup_lr_plan: constant
+weight_decay: 1.0e-5
+use_fp16: True
+
+# hyper-params
+eps: 0.65
+alpha: 0.5
+
+# logging
+log_root: ../results/
+log_proj: ''
+log_name: IterJoSRC
+

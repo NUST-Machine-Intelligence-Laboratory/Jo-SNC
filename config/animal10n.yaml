@@ -1,0 +1,29 @@
+# dataset
+data_root: ../datasets/
+dataset: animal10n
+n_classes: 10
+rescale_size: 64
+crop_size: 64
+
+# network & optimization
+arch: vgg19_bn
+opt: sgd
+batch_size: 64
+epochs: 200
+lr: 0.01
+lr_decay: cosine:10
+warmup_epochs: 10
+warmup_lr: 0.01
+warmup_lr_plan: constant
+weight_decay: 3.0e-5
+use_fp16: False
+
+# hyper-params
+eps: 0.1
+alpha: 0.5
+
+# logging
+log_root: ../results/
+log_proj: ''
+log_name: IterJoSRC
+

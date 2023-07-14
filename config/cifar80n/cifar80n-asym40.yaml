@@ -1,0 +1,32 @@
+# dataset
+data_root: ../datasets/
+dataset: cifar80n-asym40
+n_classes: 80
+rescale_size: 32
+crop_size: 32
+noise_type: pairflip
+idn_noise_rate: 0.4
+ood_noise_rate: 0.2
+
+# network & optimization
+arch: cnn
+opt: adam
+batch_size: 128
+epochs: 200
+lr: 0.001
+lr_decay: linear:80,0.0,200
+warmup_epochs: 10
+warmup_lr: 0.001
+warmup_lr_plan: constant
+weight_decay: 0.0e-5
+use_fp16: False
+
+# hyper-params
+eps: 0.6
+alpha: 0.5
+
+# logging
+log_root: ../results/
+log_proj: ''
+log_name: IterJoSRC
+
