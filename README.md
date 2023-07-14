@@ -57,7 +57,7 @@ bash scripts/aircraft.sh ${GPU_ID}
 - Download trained models from the above model zoo.
 - Activate the virtual environment (e.g., conda) and run the testing command with specified `GPU_ID` like following
 ```
-python demo.py --model_path aircraft.pth --dataset web-aircraft --nclasses 100 --gpu ${GPU_ID}
+python demo.py --cfg config/aircraft.yaml --model-path web_aircraft.pth --gpu ${GPU_ID}
 ```
 
 

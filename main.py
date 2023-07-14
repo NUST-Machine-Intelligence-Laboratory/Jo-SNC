@@ -141,12 +141,6 @@ def build_dataset(cfg):
         else:
             transform_type = 'train_strong_aug'
         dataset = build_food101n_dataset(os.path.join(cfg.data_root, cfg.dataset), MultiDataTransform([transform['train'], transform[transform_type]]), transform['test'])
-    elif cfg.dataset == 'clothing1m':
-        if cfg.transform == 'weak':
-            transform_type = 'train'
-        else:
-            transform_type = 'train_strong_aug'
-        dataset = build_clothing1m_dataset(os.path.join(cfg.data_root, cfg.dataset), MultiDataTransform([transform['train'], transform[transform_type]]), transform['test'])
     elif cfg.dataset in ['mini-webvision', 'webvision']:
         if cfg.transform == 'weak':
             transform_type = 'train'
