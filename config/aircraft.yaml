@@ -2,7 +2,7 @@
 data_root: ../datasets/
 dataset: web-aircraft
 n_classes: 100
-rescale_size: 448
+rescale_size: 512
 crop_size: 448
 
 # network & optimization
