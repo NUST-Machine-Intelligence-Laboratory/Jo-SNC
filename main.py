@@ -452,19 +452,16 @@ def main(gpu, cfg):
                     # ID noisy samples
                     losses_cls_id = id_loss_func(logits1[idx_id], pll_labelsets[idx_id], reduction='none') * 0.5 + \
                                     id_loss_func(logits2[idx_id], pll_labelsets[idx_id], reduction='none') * 0.5
-                    if cfg.conf_weight:
-                        losses_cls_id = losses_cls_id * torch.sqrt(topK_conf[idx_id])
+                    losses_cls_id = losses_cls_id * torch.sqrt(topK_conf[idx_id])
                     # OOD noisy samples
                     if cfg.cls4ood == 'josrc':
                         losses_cls_ood = id_loss_func(logits1[idx_ood], pll_labelsets[idx_ood], reduction='none') * 0.5 + \
                                          id_loss_func(logits2[idx_ood], pll_labelsets[idx_ood], reduction='none') * 0.5
-                        if cfg.conf_weight:
-                            losses_cls_ood = losses_cls_ood * torch.sqrt(topK_conf[idx_ood])
+                        losses_cls_ood = losses_cls_ood * torch.sqrt(topK_conf[idx_ood])
                     elif cfg.cls4ood == 'nl':
                         losses_cls_ood = negative_cross_entropy_loss(logits1[idx_ood], false_labels[idx_ood], reduction='none') * 0.5 + \
                                          negative_cross_entropy_loss(logits2[idx_ood], false_labels[idx_ood], reduction='none') * 0.5
-                        if cfg.conf_weight:
-                            losses_cls_ood = losses_cls_ood * torch.square(1-least_scores[idx_ood])
+                        losses_cls_ood = losses_cls_ood * torch.square(1-least_scores[idx_ood])
                     else:
                         raise AssertionError(f'cls4ood: {cfg.cls4ood} is not supported!')
                     losses_pll_all = torch.cat((losses_cls_clean, losses_cls_id, losses_cls_ood), dim=0)
